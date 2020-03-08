@@ -1,0 +1,39 @@
+<h1 style="text-align: center">Edit</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <form [formGroup]="formEdit" (ngSubmit)="update()">
+        <div>
+          <label>URL</label>
+          <input class="form-control" formControlName="url">
+          <div *ngIf="url.invalid && url.touched">
+            <div *ngIf="url.errors.required">
+              <p class="error" style="color: red">
+                <i class="fa fa-exclamation-circle">
+                  Can not be empty!
+                </i>
+              </p>
+            </div>
+          </div>
+          <label>Tag</label>
+          <input class="form-control" formControlName="tag">
+          <label>Descriptions</label>
+          <input class="form-control" formControlName="descriptions">
+          <div *ngIf="descriptions.invalid && descriptions.touched">
+            <div *ngIf="descriptions.errors.required">
+              <p class="error">
+                <i class="fa fa-exclamation-circle">
+                  Can not be empty!
+                </i>
+              </p>
+            </div>
+          </div>
+          <button class="btn btn-danger" (click)="delete()">Delete</button>
+        </div>
+        <button class="btn btn-primary" [disabled]="!formEdit.valid">Update</button>
+        <button class="btn btn-dark" routerLink="/awesome">Cancel</button>
+      </form>
+
+    </div>
+  </div>
+</div>
